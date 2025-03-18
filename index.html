@@ -1,1 +1,179 @@
-Данный сайт используется для автоматизации обновлений приложения.
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приложение</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            background: linear-gradient(135deg, #D3E2DC, #C4D5CF);
+            animation: gradientAnimation 6s infinite alternate ease-in-out;
+            background-size: 400% 400%;
+        }
+
+        @keyframes gradientAnimation {
+            0%   { background: linear-gradient(135deg, #D3E2DC, #C4D5CF); }
+            20%  { background: linear-gradient(140deg, #D1E0DA, #C6D7D1); }
+            40%  { background: linear-gradient(145deg, #CFDED8, #C7D8D2); }
+            60%  { background: linear-gradient(150deg, #CEDCD7, #C8D9D3); }
+            80%  { background: linear-gradient(155deg, #CCDAD5, #C9DAD4); }
+            100% { background: linear-gradient(160deg, #C4D5CF, #D3E2DC); }
+        }
+
+        .container {
+            animation: fadeIn 1.5s ease-in-out;
+            margin-bottom: 20vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            animation: logoBounce 2s infinite alternate ease-in-out;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .min-version {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            backdrop-filter: blur(5px);
+        }
+
+        .download-btn {
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            background: #3987AD;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background 0.3s;
+            white-space: nowrap;
+        }
+
+        .download-btn:hover {
+            background: #d42b4a;
+        }
+
+        .version-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+            backdrop-filter: blur(4px);
+        }
+
+        .telegram {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .telegram a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .telegram svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes logoBounce {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.svg" alt="Логотип" class="logo">
+        <h1>РГУПС Mobile</h1>
+        <div class="min-version">Мин. версия Android: 8.0+</div>
+        <a href="/rgups-mobile.apk" class="download-btn">Скачать</a>
+        <div id="description" style="font-size: 14px; color: #646464;"></div>
+    </div>
+
+    <div class="telegram">
+        <a href="https://t.me/yourchannel" target="_blank">
+            <svg viewBox="0 0 24 24">
+                <path d="M22 2L11 13" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Наш Telegram-канал
+        </a>
+    </div>
+
+    <script>
+        async function fetchVersion(retryDelay = 700) {
+            try {
+                const response = await fetch('/appInfo.json'); 
+                if (!response.ok) throw new Error('Ошибка HTTP');
+                
+                const data = await response.json();
+                document.getElementById('description').textContent = `v${data.versionName}`;
+            } catch (error) {
+                setTimeout(() => fetchVersion(retryDelay), retryDelay);
+            }
+        }
+
+        fetchVersion();
+    </script>
+</body>
+</html>
