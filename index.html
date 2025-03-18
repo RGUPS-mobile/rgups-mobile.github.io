@@ -146,7 +146,7 @@
         <img src="logo.svg" alt="Логотип" class="logo">
         <h1>РГУПС Mobile</h1>
         <div class="min-version">Мин. версия Android: 8.0+</div>
-        <a href="/rgups-mobile.apk" class="download-btn">Скачать</a>
+        <a href="rgups-mobile.apk" class="download-btn">Скачать</a>
         <div id="description" style="font-size: 14px; color: #646464;"></div>
     </div>
 
@@ -163,7 +163,7 @@
     <script>
         async function fetchVersion(retryDelay = 700) {
             try {
-                const response = await fetch('/appInfo.json'); 
+                const response = await fetch('appInfo.json'); 
                 if (!response.ok) throw new Error('Ошибка HTTP');
                 
                 const data = await response.json();
