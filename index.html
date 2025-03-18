@@ -167,7 +167,7 @@
                 if (!response.ok) throw new Error('Ошибка HTTP');
                 
                 const data = await response.json();
-                document.getElementById('description').textContent = `v${data.versionName}`;
+                document.getElementById('description').textContent = `v${data.version}`;
             } catch (error) {
                 setTimeout(() => fetchVersion(retryDelay), retryDelay);
             }
