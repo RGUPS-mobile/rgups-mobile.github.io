@@ -64,6 +64,15 @@
             color: #202020;
         }
 
+        .warning {
+            background: rgba(255, 255, 255, 0.50);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            opacity: 0.9;
+            color: #202020;
+        }
+
         .download-btn {
             padding: 12px 24px;
             font-size: 1rem;
@@ -158,7 +167,7 @@
             Наш Telegram-канал
         </a>
     </div>
-    <div class="min-version">⚠️ Сбои в работе ЭИОС РГУПС</div>
+    <div class="warning">⚠️ Наблюдаются сбои в работе информационной системы РГУПС. Из-за этого приложение работает в оффлайн-режиме. Ранее вошедшим в аккаунт пользователям доступно только расписание</div>
 
     <script>
         async function fetchVersion(retryDelay = 700) {
