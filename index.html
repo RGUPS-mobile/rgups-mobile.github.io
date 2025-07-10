@@ -319,8 +319,7 @@
             <p class="tagline" data-animate>Мобильный личный кабинет РГУПС для вашего смартфона</p>
             
             <div class="version-info" data-animate id="version-info">
-                <span>Текущая версия:</span>
-                <span id="version">Загрузка...</span>
+                <span id="version">Получение информации...</span>
             </div>
             
             <div class="download-section" data-animate>
@@ -330,7 +329,7 @@
                 </a>
                 
                 <a href="#" class="download-btn ios-btn" style="pointer-events: none; opacity: 0.7;">
-                    <img class="btn-icon" src="apple.svg" style="margin-bottom: 4px;"/>
+                    <img class="btn-icon" src="apple.svg" style="margin-bottom: 3px;"/>
                     Скоро на iOS (15.0+)<span class="version-badge" style="background-color: #1DAC6A;">STABLE</span>
                 </a>
             </div>
@@ -386,7 +385,7 @@
                 if (!response.ok) throw new Error('Ошибка HTTP');
                 
                 const data = await response.json();
-                document.getElementById('version').textContent = `v${data.version}`;
+                document.getElementById('version').textContent = `Текущая версия: v${data.version}`;
             } catch (error) {
                 setTimeout(() => fetchVersion(retryDelay), retryDelay);
             }
