@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>РГУПС Mobile</title>
+    <title>РГУПС Mobile - приложение</title>
     <meta name="description" content="Мобильное приложение Ростовского государственного университета путей сообщения">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,18 +11,18 @@
     <style>
         :root {
             --primary: #2B75C2;
-            --primary-dark: #FFFFFF;
-            --primary-light: #FFFFFF;
-            --accent: #2B75C2;
+            --primary-dark: #1E5EA8;
+            --primary-light: #E1F0FA;
+            --accent: #FF7D33;
             --text: #2D3748;
             --text-light: #718096;
             --text-lighter: #A0AEC0;
             --white: #FFFFFF;
-            --bg-gradient: linear-gradient(135deg, #F0F9FF 0%, #E6F7FF 100%);
-            --card-bg: rgba(255, 255, 255, 0.9);
-            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg-color: #F8FAFC;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -34,13 +34,12 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-gradient);
+            background-color: var(--bg-color);
             color: var(--text);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         .container {
@@ -53,8 +52,6 @@
             align-items: center;
             justify-content: center;
             flex: 1;
-            position: relative;
-            z-index: 1;
         }
 
         .hero {
@@ -88,7 +85,7 @@
             width: 120px;
             height: 120px;
             object-fit: contain;
-            filter: drop-shadow(0 5px 15px rgba(42, 127, 157, 0.2));
+            filter: drop-shadow(0 5px 15px rgba(43, 117, 194, 0.2));
         }
 
         h1 {
@@ -136,25 +133,9 @@
             overflow: hidden;
         }
 
-        .download-btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-            opacity: 0;
-            transition: var(--transition);
-        }
-
         .download-btn:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-hover);
-        }
-
-        .download-btn:hover::after {
-            opacity: 1;
         }
 
         .download-btn:active {
@@ -192,8 +173,7 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .feature-card:hover {
@@ -222,7 +202,7 @@
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
-            color: var(--text);
+            color: var(--primary-dark);
         }
 
         .feature-desc {
@@ -237,13 +217,12 @@
             font-size: 0.9rem;
             font-weight: 500;
             color: var(--text-light);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow);
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .version-badge {
@@ -269,8 +248,7 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             margin-top: 2rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .telegram-link:hover {
@@ -284,49 +262,9 @@
             height: 20px;
         }
 
-        .waves {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            overflow: hidden;
-            z-index: 0;
-        }
-
-        .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%232A7F9D"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%232A7F9D"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%232A7F9D"></path></svg>');
-            background-size: cover;
-            background-repeat: no-repeat;
-            animation: wave 15s linear infinite;
-        }
-
-        .wave:nth-child(2) {
-            opacity: 0.5;
-            animation-delay: -5s;
-            animation-duration: 20s;
-        }
-
-        .wave:nth-child(3) {
-            opacity: 0.3;
-            animation-delay: -2s;
-            animation-duration: 25s;
-        }
-
-        @keyframes wave {
-            0% { transform: translateX(0) translateZ(0) scaleY(1); }
-            50% { transform: translateX(-25%) translateZ(0) scaleY(0.8); }
-            100% { transform: translateX(-50%) translateZ(0) scaleY(1); }
-        }
-
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
 
@@ -348,6 +286,7 @@
             }
         }
 
+        /* Анимация появления */
         [data-animate] {
             opacity: 0;
             animation: fadeInUp 0.8s forwards;
@@ -373,12 +312,6 @@
     </style>
 </head>
 <body>
-    <div class="waves">
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-    </div>
-
     <div class="container">
         <div class="hero">
             <div class="logo-container" data-animate>
@@ -392,17 +325,25 @@
             <div class="version-info" data-animate id="version-info">
                 <span>Текущая версия:</span>
                 <span id="version">Загрузка...</span>
+                <span class="version-badge">BETA</span>
             </div>
             
             <div class="download-section" data-animate>
                 <a href="RGUPS-android/rgups-mobile.apk" class="download-btn android-btn">
-                    <img class="btn-icon" src="android.svg" width="30" height="30"/>
-                    Скачать на Android (8.0+) <span class="version-badge">BETA</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.523 15.3414C17.4111 16.0754 16.9244 16.7064 16.2422 17.0204L13.751 15.7984C12.915 15.4454 12.366 14.6274 12.366 13.7164V10.2264C12.366 9.31537 12.915 8.49737 13.751 8.14437L16.2422 6.92237C16.9244 7.23637 17.4111 7.86737 17.523 8.60137L17.524 8.61137H20.6V15.3414H17.523Z" fill="currentColor"/>
+                        <path d="M6.477 15.3414H3.4V8.61137H6.477C6.5889 7.87737 7.0756 7.24637 7.7578 6.93237L10.249 8.15437C11.085 8.50737 11.634 9.32537 11.634 10.2364V13.7264C11.634 14.6374 11.085 15.4554 10.249 15.8084L7.7578 17.0304C7.0756 16.7164 6.5889 16.0854 6.477 15.3514V15.3414Z" fill="currentColor"/>
+                        <path d="M13.751 15.7984L16.2422 17.0204C15.8476 17.2034 15.405 17.3014 14.941 17.3014H9.059C8.595 17.3014 8.1524 17.2034 7.7578 17.0204L10.249 15.7984C10.663 15.6224 11.034 15.3504 11.334 15.0014H12.666C12.966 15.3504 13.337 15.6224 13.751 15.7984Z" fill="currentColor"/>
+                        <path d="M17.524 8.61137H20.6V7.70137C20.6 6.79037 19.835 6.05037 18.889 6.05037H5.111C4.165 6.05037 3.4 6.79037 3.4 7.70137V16.3014C3.4 17.2124 4.165 17.9524 5.111 17.9524H18.889C19.835 17.9524 20.6 17.2124 20.6 16.3014V15.3414H17.524L17.523 15.3514C17.5225 15.6244 17.4461 15.8924 17.301 16.1264C17.1559 16.3604 16.9472 16.5514 16.697 16.6784L13.751 15.7984L13.658 15.7594C13.244 15.5834 12.873 15.3114 12.573 14.9624H11.241C10.941 15.3114 10.57 15.5834 10.156 15.7594L10.063 15.7984L7.117 16.6784C6.8668 16.5514 6.6581 16.3604 6.513 16.1264C6.3679 15.8924 6.2915 15.6244 6.291 15.3514V8.60137C6.2915 8.32837 6.3679 8.06037 6.513 7.82637C6.6581 7.59237 6.8668 7.40137 7.117 7.27437L10.063 8.15437L10.156 8.19337C10.57 8.36937 10.941 8.64137 11.241 8.99037H12.573C12.873 8.64137 13.244 8.36937 13.658 8.19337L13.751 8.15437L16.697 7.27437C16.9472 7.40137 17.1559 7.59237 17.301 7.82637C17.4461 8.06037 17.5225 8.32837 17.523 8.60137L17.524 8.61137Z" fill="currentColor"/>
+                    </svg>
+                    Скачать для Android
                 </a>
                 
                 <a href="#" class="download-btn ios-btn" style="pointer-events: none; opacity: 0.7;">
-                    <img class="btn-icon" src="apple.svg" width="30" height="30"/>
-                    Cкачать на iOS (15.0+) [СКОРО] <span class="version-badge" style="background: #1DAC6A;">STABLE</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.365 1.43C15.11 1.655 13.805 2.47 12.955 3.52C12.13 4.54 11.495 5.995 11.7 7.33C13.085 7.42 14.345 6.63 15.18 5.58C15.98 4.585 16.565 3.115 16.365 1.43ZM20.915 11.845C20.915 11.845 19.54 13.795 19.54 15.61C19.54 19.135 22.37 20.365 22.405 20.365C22.37 20.425 21.96 21.79 20.84 23.215C19.89 24.46 18.89 25.705 17.485 25.705C16.085 25.705 15.66 24.82 14.04 24.82C12.32 24.82 11.76 25.75 10.415 25.75C9.07 25.75 7.985 24.505 6.825 22.585C5.49 20.35 4.295 16.69 4.295 13.51C4.295 9.205 6.74 6.955 8.985 6.955C10.365 6.955 11.505 7.99 12.38 7.99C13.205 7.99 14.465 6.895 15.935 6.895C16.57 6.895 18.445 7.03 19.66 8.74C18.325 9.61 17.39 11.005 17.39 12.58C17.39 14.38 18.485 15.67 19.915 15.67C20.47 15.67 20.915 15.55 20.915 15.55C20.915 15.55 20.915 13.33 20.915 11.845Z" fill="currentColor"/>
+                    </svg>
+                    Скоро для iOS
                 </a>
             </div>
             
@@ -445,7 +386,7 @@
                 <svg class="telegram-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.417 15.181L9.02 20.765C9.588 20.765 9.834 20.521 10.129 20.228L12.792 17.683L18.31 21.724C19.322 22.288 20.035 21.991 20.308 20.793L23.93 3.821L23.931 3.82C24.252 2.324 23.39 1.739 22.404 2.106L1.113 10.257C-0.338 10.821 -0.316 11.631 0.867 11.998L6.31 13.691L18.953 5.78C19.548 5.386 20.089 5.604 19.644 5.998L9.417 15.181Z" fill="currentColor"/>
                 </svg>
-                Новостной Telegram-канал
+                Наш Telegram-канал
             </a>
         </div>
     </div>
@@ -463,12 +404,14 @@
             }
         }
 
+        // Инициализация анимаций
         document.addEventListener('DOMContentLoaded', () => {
             const animateElements = document.querySelectorAll('[data-animate]');
             animateElements.forEach(el => {
                 el.style.opacity = '0';
             });
             
+            // Запуск анимаций
             setTimeout(() => {
                 animateElements.forEach(el => {
                     el.style.animationPlayState = 'running';
@@ -476,6 +419,7 @@
                 });
             }, 100);
             
+            // Получение версии
             fetchVersion();
         });
     </script>
