@@ -329,12 +329,12 @@
             <div class="download-section" data-animate>
                 <a href="RGUPS-android/rgups-mobile.apk" class="download-btn android-btn">
                     <img class="btn-icon" src="android.svg"/>
-                    Скачать для Android <span class="version-badge">BETA</span>
+                    Android (8.0+)<span class="version-badge">BETA</span>
                 </a>
                 
                 <a href="#" class="download-btn ios-btn" style="pointer-events: none; opacity: 0.7;">
                     <img class="btn-icon" src="apple.svg"/>
-                    Скоро для iOS <span class="version-badge">STABLE</span>
+                    iOS (скоро, 15.0+)<span class="version-badge" style="background-color: #1DAC6A;">STABLE</span>
                 </a>
             </div>
             
@@ -377,7 +377,7 @@
                 <svg class="telegram-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.417 15.181L9.02 20.765C9.588 20.765 9.834 20.521 10.129 20.228L12.792 17.683L18.31 21.724C19.322 22.288 20.035 21.991 20.308 20.793L23.93 3.821L23.931 3.82C24.252 2.324 23.39 1.739 22.404 2.106L1.113 10.257C-0.338 10.821 -0.316 11.631 0.867 11.998L6.31 13.691L18.953 5.78C19.548 5.386 20.089 5.604 19.644 5.998L9.417 15.181Z" fill="currentColor"/>
                 </svg>
-                Наш Telegram-канал
+                Новостной Telegram-канал
             </a>
         </div>
     </div>
@@ -395,14 +395,12 @@
             }
         }
 
-        // Инициализация анимаций
         document.addEventListener('DOMContentLoaded', () => {
             const animateElements = document.querySelectorAll('[data-animate]');
             animateElements.forEach(el => {
                 el.style.opacity = '0';
             });
             
-            // Запуск анимаций
             setTimeout(() => {
                 animateElements.forEach(el => {
                     el.style.animationPlayState = 'running';
@@ -410,7 +408,6 @@
                 });
             }, 100);
             
-            // Получение версии
             fetchVersion();
         });
     </script>
